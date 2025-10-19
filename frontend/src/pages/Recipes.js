@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { recipesAPI } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 const Recipes = () => {
+  const { user } = useAuth();
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedDosha, setSelectedDosha] = useState('');
@@ -558,9 +560,10 @@ const Recipes = () => {
                 <div className="mt-auto">
                 <button 
                   onClick={() => {
-                    // Track recipe exploration
-                    const currentCount = parseInt(localStorage.getItem('recipesExplored') || '0');
-                    localStorage.setItem('recipesExplored', (currentCount + 1).toString());
+                    // Track recipe exploration per user
+                    const userKey = user?.email || 'guest';
+                    const currentCount = parseInt(localStorage.getItem(`recipesExplored_${userKey}`) || '0');
+                    localStorage.setItem(`recipesExplored_${userKey}`, (currentCount + 1).toString());
                     
                     // Show success message
                     alert(`🎉 Great choice! "${recipe.title}" has been added to your tried recipes. Happy cooking!`);

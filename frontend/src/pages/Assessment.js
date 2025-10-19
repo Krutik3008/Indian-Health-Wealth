@@ -514,7 +514,11 @@ const Assessment = () => {
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4 justify-center">
           <button
-            onClick={() => setResult(null)}
+            onClick={() => {
+              setResult(null);
+              setCurrentQuestion(0);
+              formik.resetForm();
+            }}
             className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-3 rounded-lg font-semibold hover:from-gray-700 hover:to-gray-800 transition-all duration-200 shadow-lg"
           >
             🔄 Retake Assessment

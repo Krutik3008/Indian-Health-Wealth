@@ -69,15 +69,17 @@ const Recommendations = () => {
     fetchRecommendations(selectedDosha);
     if (user) fetchPersonalizedRecommendations();
     
-    // Track recommendation views
-    const currentViews = parseInt(localStorage.getItem('recommendationsViewed') || '0');
+    // Track recommendation views per user
+    const userKey = user?.email || 'guest';
+    const currentViews = parseInt(localStorage.getItem(`recommendationsViewed_${userKey}`) || '0');
     setViewedRecommendations(currentViews);
   }, [selectedDosha, user]);
 
   const trackRecommendationView = () => {
-    const currentViews = parseInt(localStorage.getItem('recommendationsViewed') || '0');
+    const userKey = user?.email || 'guest';
+    const currentViews = parseInt(localStorage.getItem(`recommendationsViewed_${userKey}`) || '0');
     const newViews = currentViews + 1;
-    localStorage.setItem('recommendationsViewed', newViews.toString());
+    localStorage.setItem(`recommendationsViewed_${userKey}`, newViews.toString());
     setViewedRecommendations(newViews);
   };
 

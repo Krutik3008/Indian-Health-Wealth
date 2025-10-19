@@ -61,9 +61,10 @@ const Forum = () => {
     try {
       await forumAPI.createPost(newPost);
       
-      // Track community post
-      const currentCount = parseInt(localStorage.getItem('communityPosts') || '0');
-      localStorage.setItem('communityPosts', (currentCount + 1).toString());
+      // Track community post per user
+      const userKey = user?.email || 'guest';
+      const currentCount = parseInt(localStorage.getItem(`communityPosts_${userKey}`) || '0');
+      localStorage.setItem(`communityPosts_${userKey}`, (currentCount + 1).toString());
       
       setNewPost({ title: '', content: '', category: 'general' });
       setShowCreateForm(false);
