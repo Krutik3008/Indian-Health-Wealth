@@ -1,0 +1,19 @@
+{
+  "name": "indian-health-wealth",
+  "version": "1.0.0",
+  "description": "indian health wealth",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Indian-Health-Wealth"
+  },
+  "keywords": [
+    "Health"
+  ],
+  "author": "Krutik",
+  "license": "ISC"
+}
