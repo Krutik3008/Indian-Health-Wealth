@@ -131,10 +131,7 @@ npm test
 ### Assessment
 - `POST /api/assessment` - Submit health assessment
 - `GET /api/assessment/history` - Get assessment history
-
-### Admin
-- `GET /api/admin/users` - Get all users (admin only)
-
+  
 ## 🔧 Configuration
 
 ### Backend Configuration
