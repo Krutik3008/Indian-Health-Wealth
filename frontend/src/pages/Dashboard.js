@@ -17,19 +17,21 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const assessmentResponse = await assessmentAPI.getHistory();
+        const userKey = user?.email || 'guest';
         setStats({
           assessments: assessmentResponse.data.length,
-          recommendations: parseInt(localStorage.getItem('recommendationsViewed') || '0'),
-          recipes: parseInt(localStorage.getItem('recipesExplored') || '0'),
-          posts: parseInt(localStorage.getItem('communityPosts') || '0')
+          recommendations: parseInt(localStorage.getItem(`recommendationsViewed_${userKey}`) || '0'),
+          recipes: parseInt(localStorage.getItem(`recipesExplored_${userKey}`) || '0'),
+          posts: parseInt(localStorage.getItem(`communityPosts_${userKey}`) || '0')
         });
       } catch (error) {
         console.error('Failed to fetch data:', error);
+        const userKey = user?.email || 'guest';
         setStats({ 
           assessments: 0, 
-          recommendations: parseInt(localStorage.getItem('recommendationsViewed') || '0'),
-          recipes: parseInt(localStorage.getItem('recipesExplored') || '0'),
-          posts: parseInt(localStorage.getItem('communityPosts') || '0')
+          recommendations: parseInt(localStorage.getItem(`recommendationsViewed_${userKey}`) || '0'),
+          recipes: parseInt(localStorage.getItem(`recipesExplored_${userKey}`) || '0'),
+          posts: parseInt(localStorage.getItem(`communityPosts_${userKey}`) || '0')
         });
       }
     };
@@ -316,7 +318,7 @@ const Dashboard = () => {
         <div className="text-center mt-6">
           <Link
             to="/recipes"
-            className="inline-flex items-center bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-700 hover:to-teal-700 transition-all duration-200 shadow-lg"
+            className="inline-flex items-center bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-200 shadow-lg"
           >
             <span className="text-xl mr-2">🍽️</span>
             Explore All Recipes
@@ -325,15 +327,15 @@ const Dashboard = () => {
       </div>
 
       {/* Getting Started */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl shadow-xl p-8">
+      <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-2xl shadow-xl p-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Begin Your Journey?</h2>
-          <p className="text-xl text-indigo-100 mb-6">
+          <p className="text-xl text-orange-100 mb-6">
             Start with our comprehensive Prakriti assessment to discover your unique body constitution
           </p>
           <Link
             to="/assessment"
-            className="inline-flex items-center bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-50 transition-colors duration-200 shadow-lg"
+            className="inline-flex items-center bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-colors duration-200 shadow-lg"
           >
             <span className="text-2xl mr-3">🚀</span>
             Start Assessment Now

@@ -221,8 +221,3 @@ npm run build
 4. **Module not found errors**
    - Run `npm install` in respective directories
    - Clear node_modules and reinstall if needed
-
-### Getting Help
-- Check console logs for detailed error messages
-- Ensure all dependencies are installed
-- Verify both frontend and backend servers are running
