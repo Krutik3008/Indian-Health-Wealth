@@ -1,4 +1,4 @@
-# IHWP - Integrated Health and Wellness Platform
+# IHWP - Indian Health and Wealth Wellness Platform
 
 A full-stack web application for health and wellness management with user authentication, health assessments, forum discussions, and personalized recommendations.
 
